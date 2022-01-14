@@ -1,0 +1,24 @@
+﻿#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+
+
+#基于 `microsoft/dotnet:2.1-aspnetcore-runtime` 来构建我们的镜像
+FROM microsoft/dotnet:3.1-aspnetcore-runtime 
+#拷贝项目publish文件夹中的所有文件到 docker容器中的publish文件夹中 
+COPY . /publish
+#设置工作目录为 `/publish` 文件夹，即容器启动默认的文件夹
+WORKDIR /publish
+#设置Docker容器对外暴露80端口
+EXPOSE 80
+#使用`dotnet HelloWorld.dll`来运行应用程序
+ENTRYPOINT ["dotnet", "netcoreTest.dll"]
+
+
+
+
+
+
+
+
+
+
